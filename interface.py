@@ -8,9 +8,11 @@
 import sys
 import webbrowser
 from xml.dom import minidom
+import os
+from zipfile import *
 
 try:
-    from Tkinter import *
+    from Tkinter import * 
 except ImportError:
     from tkinter import *
 
@@ -55,7 +57,7 @@ class New_Toplevel:
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
         _ana1color = '#d9d9d9' # X11 color: 'gray85' 
-        _ana2color = '#d9d9d9' # X11 color: 'gray85' 
+        _ana2color = '#d9d9d9' # X11 color: 'gray85'
 
         top.geometry("796x671+716+165")
         top.title("Android Data Leaks Interface")
@@ -75,6 +77,7 @@ class New_Toplevel:
         self.Text1.configure(selectforeground="black")
         self.Text1.configure(width=294)
         self.Text1.configure(wrap=WORD)
+        
 
         self.Button2 = Button(top)
         self.Button2.place(relx=0.67, rely=0.28, height=33, width=77)
@@ -116,7 +119,7 @@ class New_Toplevel:
         self.Button1_1.configure(text='''Start Tool''')
 
         self.Message1 = Message(top)
-        self.Message1.place(relx=0.28, rely=0.07, relheight=0.18, relwidth=0.42)
+        self.Message1.place(relx=0.08, rely=0.07, relheight=0.18, relwidth=0.42)
         self.Message1.configure(background="#d9d9d9")
         self.Message1.configure(foreground="#000000")
         self.Message1.configure(highlightbackground="#d9d9d9")
@@ -192,7 +195,7 @@ class New_Toplevel:
         self.Message7.configure(width=105)
 
         self.Button1_3 = Button(top)
-        self.Button1_3.place(relx=0.67, rely=0.83, height=31, width=81)
+        self.Button1_3.place(relx=0.67, rely=0.83, height=33, width=77)
         self.Button1_3.configure(activebackground="#d9d9d9")
         self.Button1_3.configure(activeforeground="#000000")
         self.Button1_3.configure(background="#d9d9d9")
@@ -205,6 +208,19 @@ class New_Toplevel:
         self.Button1_3.configure(text='''Start Tool''')
         self.Button1_3.configure(width=81)
 
+        self.Button3 = Button(top)
+        self.Button3.place(relx=0.67, rely=0.13, height=33, width=77)
+        self.Button3.configure(activebackground="#d9d9d9")
+        self.Button3.configure(activeforeground="#000000")
+        self.Button3.configure(background="#d9d9d9")
+        self.Button3.configure(disabledforeground="#a3a3a3")
+        self.Button3.configure(foreground="#000000")
+        self.Button3.configure(highlightbackground="#d9d9d9")
+        self.Button3.configure(highlightcolor="black")
+        self.Button3.configure(pady="0")
+        self.Button3.configure(text='''Upload .apk''')
+        self.Button3.configure(command=lambda: extractXML())
+
         def readPermissions():
             doc = minidom.parse("AndroidManifest.xml")
             permissions = doc.getElementsByTagName("uses-permission")
@@ -212,7 +228,25 @@ class New_Toplevel:
                 list = permission.getAttribute("android:name")
                 self.Text1.insert(END, list + '\n')
 
+        def extractXML():
+            #deletes manifests already present
+            try:
+                os.remove('AndroidManifest.xml')
+            except OSError:
+                pass
 
+            #changing apk to zip
+            folder = 'test_single'
+            for filename in os.listdir(folder):
+                infilename = os.path.join(folder,filename)
+                if not os.path.isfile(infilename): continue
+                oldbase = os.path.splitext(filename)
+                newname = infilename.replace('.apk', '.zip')
+                output = os.rename(infilename, newname)
+
+            #extract AndroidManifest.xml
+            zip_ref = ZipFile(newname, 'r')
+            zip_ref.extract('AndroidManifest.xml')
 
 if __name__ == '__main__':
     vp_start_gui()

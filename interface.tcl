@@ -163,6 +163,17 @@ proc vTclWindow.top37 {base} {
         -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
         -text {Start Tool} 
     vTcl:DefineAlias "$top.but45" "Button1_3" vTcl:WidgetProc "Toplevel1" 1
+    button $top.but42 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -pady 0 -text {Upload .apk} 
+    vTcl:DefineAlias "$top.but42" "Button3" vTcl:WidgetProc "Toplevel1" 1
+    canvas $top.can38 \
+        -background {#d9d9d9} -borderwidth 2 -closeenough 1.0 -height 75 \
+        -insertbackground black -relief ridge -selectbackground {#c4c4c4} \
+        -selectforeground black -width 125 
+    vTcl:DefineAlias "$top.can38" "Canvas1" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
@@ -172,7 +183,7 @@ proc vTclWindow.top37 {base} {
         -in $top -x 530 -y 430 -width 77 -height 33 -anchor nw \
         -bordermode inside 
     place $top.mes43 \
-        -in $top -x 220 -y 50 -width 333 -relwidth 0 -height 120 -relheight 0 \
+        -in $top -x 60 -y 50 -width 333 -relwidth 0 -height 120 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.but39 \
         -in $top -x 530 -y 190 -anchor nw -bordermode ignore 
@@ -203,6 +214,10 @@ proc vTclWindow.top37 {base} {
     place $top.but45 \
         -in $top -x 530 -y 560 -width 81 -relwidth 0 -height 31 -relheight 0 \
         -anchor nw -bordermode inside 
+    place $top.but42 \
+        -in $top -x 530 -y 90 -anchor nw -bordermode ignore 
+    place $top.can38 \
+        -in $top -x 20 -y 550 -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>
 }

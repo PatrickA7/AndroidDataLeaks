@@ -68,7 +68,7 @@ proc vTclWindow.top37 {base} {
         -background {#d9d9d9} -highlightbackground {#d9d9d9} \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 796x671+571+93
+    wm geometry $top 796x671+716+165
     update
     # set in toplevel.wgt.
     global vTcl
@@ -83,16 +83,19 @@ proc vTclWindow.top37 {base} {
     vTcl:DefineAlias "$top" "Toplevel1" vTcl:Toplevel:WidgetProc "" 1
     button $top.but38 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -command webbrowser.open('http://example.com') \
+        -background {#d9d9d9} \
+        -command {lambda: webbrowser.open('http://andrototal.org/')} \
         -disabledforeground {#a3a3a3} -foreground {#000000} \
         -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
         -text {Start Tool} 
     vTcl:DefineAlias "$top.but38" "Button1" vTcl:WidgetProc "Toplevel1" 1
     button $top.but40 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
-        -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -pady 0 -text {Start Tool} 
+        -background {#d9d9d9} \
+        -command {lambda: webbrowser.open('http://tracedroid.few.vu.nl/')} \
+        -disabledforeground {#a3a3a3} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
+        -text {Start Tool} 
     vTcl:DefineAlias "$top.but40" "Button1_1" vTcl:WidgetProc "Toplevel1" 1
     message $top.mes43 \
         -background {#d9d9d9} -foreground {#000000} \
@@ -100,16 +103,67 @@ proc vTclWindow.top37 {base} {
         -text {This program is an interface for a collection of tools used for Android app analysis. Have a .apk file ready, and click on 'Start Tool' to launch the tool to analyse your app} \
         -width 333 
     vTcl:DefineAlias "$top.mes43" "Message1" vTcl:WidgetProc "Toplevel1" 1
+    button $top.but39 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -pady 0 -text {Start Tool} 
+    vTcl:DefineAlias "$top.but39" "Button2" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes40 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -text {Check permissions} -width 126 
+    vTcl:DefineAlias "$top.mes40" "Message2" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes41 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -text AndroTotal \
+        -width 91 
+    vTcl:DefineAlias "$top.mes41" "Message3" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes42 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -text TraceDroid \
+        -width 86 
+    vTcl:DefineAlias "$top.mes42" "Message4" vTcl:WidgetProc "Toplevel1" 1
+    text $top.tex44 \
+        -background white -font TkTextFont -foreground black -height 84 \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -insertbackground black -selectbackground {#c4c4c4} \
+        -selectforeground black -width 294 -wrap word 
+    .top37.tex44 configure -font TkTextFont
+    .top37.tex44 insert end text
+    vTcl:DefineAlias "$top.tex44" "Text1" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes39 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -text {Created by Team RBPT} -width 185 
+    vTcl:DefineAlias "$top.mes39" "Message5" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
     place $top.but38 \
-        -in $top -x 520 -y 240 -anchor nw -bordermode ignore 
+        -in $top -x 530 -y 360 -anchor nw -bordermode ignore 
     place $top.but40 \
-        -in $top -x 520 -y 340 -width 77 -height 33 -anchor nw \
+        -in $top -x 530 -y 470 -width 77 -height 33 -anchor nw \
         -bordermode inside 
     place $top.mes43 \
         -in $top -x 220 -y 50 -width 333 -relwidth 0 -height 120 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.but39 \
+        -in $top -x 530 -y 190 -anchor nw -bordermode ignore 
+    place $top.mes40 \
+        -in $top -x 230 -y 190 -width 126 -relwidth 0 -height 30 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.mes41 \
+        -in $top -x 240 -y 350 -width 91 -relwidth 0 -height 50 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.mes42 \
+        -in $top -x 240 -y 460 -width 86 -relwidth 0 -height 30 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.tex44 \
+        -in $top -x 270 -y 250 -width 294 -relwidth 0 -height 84 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.mes39 \
+        -in $top -x 0 -y 620 -width 185 -relwidth 0 -height 70 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>

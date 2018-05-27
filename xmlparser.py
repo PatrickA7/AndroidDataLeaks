@@ -1,6 +1,6 @@
 from xml.dom import minidom
 
-doc = minidom.parse("AndroidManifest.xml")
+doc = minidom.parse("manifests\AndroidManifest.xml")
 
 permissions = doc.getElementsByTagName("uses-permission")
 for permission in permissions:

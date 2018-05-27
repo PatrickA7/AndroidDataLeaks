@@ -68,7 +68,7 @@ proc vTclWindow.top37 {base} {
         -background {#d9d9d9} -highlightbackground {#d9d9d9} \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 796x671+571+93
+    wm geometry $top 796x671+716+165
     update
     # set in toplevel.wgt.
     global vTcl
@@ -132,13 +132,36 @@ proc vTclWindow.top37 {base} {
     .top37.tex44 configure -font TkTextFont
     .top37.tex44 insert end text
     vTcl:DefineAlias "$top.tex44" "Text1" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes39 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -text {Created by Team RBPT} -width 185 
+    vTcl:DefineAlias "$top.mes39" "Message5" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes38 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -text {Mobile Malware Analysis} -width 186 
+    vTcl:DefineAlias "$top.mes38" "Message6" vTcl:WidgetProc "Toplevel1" 1
+    button $top.but41 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} \
+        -command {lambda: webbrowser.open('http://tracedroid.few.vu.nl/')} \
+        -disabledforeground {#a3a3a3} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
+        -text {Start Tool} 
+    vTcl:DefineAlias "$top.but41" "Button1_2" vTcl:WidgetProc "Toplevel1" 1
+    message $top.mes44 \
+        -background {#d9d9d9} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black \
+        -text {NVISO ApkScan} -width 105 
+    vTcl:DefineAlias "$top.mes44" "Message7" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
     place $top.but38 \
         -in $top -x 530 -y 360 -anchor nw -bordermode ignore 
     place $top.but40 \
-        -in $top -x 530 -y 470 -width 77 -height 33 -anchor nw \
+        -in $top -x 530 -y 430 -width 77 -height 33 -anchor nw \
         -bordermode inside 
     place $top.mes43 \
         -in $top -x 220 -y 50 -width 333 -relwidth 0 -height 120 -relheight 0 \
@@ -152,10 +175,22 @@ proc vTclWindow.top37 {base} {
         -in $top -x 240 -y 350 -width 91 -relwidth 0 -height 50 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.mes42 \
-        -in $top -x 240 -y 460 -width 86 -relwidth 0 -height 30 -relheight 0 \
+        -in $top -x 240 -y 430 -width 86 -relwidth 0 -height 30 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.tex44 \
         -in $top -x 270 -y 250 -width 294 -relwidth 0 -height 84 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.mes39 \
+        -in $top -x 0 -y 620 -width 185 -relwidth 0 -height 70 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.mes38 \
+        -in $top -x 190 -y 500 -width 186 -relwidth 0 -height 30 -relheight 0 \
+        -anchor nw -bordermode ignore 
+    place $top.but41 \
+        -in $top -x 530 -y 500 -width 77 -height 33 -anchor nw \
+        -bordermode inside 
+    place $top.mes44 \
+        -in $top -x 230 -y 550 -width 105 -relwidth 0 -height 50 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>

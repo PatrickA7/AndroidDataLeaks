@@ -155,6 +155,14 @@ proc vTclWindow.top37 {base} {
         -highlightbackground {#d9d9d9} -highlightcolor black \
         -text {NVISO ApkScan} -width 105 
     vTcl:DefineAlias "$top.mes44" "Message7" vTcl:WidgetProc "Toplevel1" 1
+    button $top.but45 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} \
+        -command {lambda: webbrowser.open('http://tracedroid.few.vu.nl/')} \
+        -disabledforeground {#a3a3a3} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
+        -text {Start Tool} 
+    vTcl:DefineAlias "$top.but45" "Button1_3" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
@@ -192,6 +200,9 @@ proc vTclWindow.top37 {base} {
     place $top.mes44 \
         -in $top -x 230 -y 550 -width 105 -relwidth 0 -height 50 -relheight 0 \
         -anchor nw -bordermode ignore 
+    place $top.but45 \
+        -in $top -x 530 -y 560 -width 81 -relwidth 0 -height 31 -relheight 0 \
+        -anchor nw -bordermode inside 
 
     vTcl:FireEvent $base <<Ready>>
 }
